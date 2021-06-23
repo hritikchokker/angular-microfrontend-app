@@ -1,0 +1,21 @@
+version: "3.3"
+services:
+  web:
+    build:
+      context: .
+      dockerfile: ./projects/website/Dockerfile
+    image: website-ng
+    container_name: website-ng
+  admin:
+    build:
+      context: .
+      dockerfile: ./projects/admin/Dockerfile
+    image: admin-ng
+    container_name: admin-ng
+  dashboard:
+    build:
+      context: .
+      dockerfile: ./projects/dashboard/Dockerfile
+    image: dashboard-ng
+    container_name: dashboard-ng
+# sudo docker-compose -f docker-compose.yml up -d --build
