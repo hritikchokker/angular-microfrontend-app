@@ -1,21 +1,38 @@
-version: "3.3"
+version: "3.0"
 services:
-  web:
-    build:
-      context: .
-      dockerfile: ./projects/website/Dockerfile
-    image: website-ng
-    container_name: website-ng
-  admin:
-    build:
-      context: .
-      dockerfile: ./projects/admin/Dockerfile
-    image: admin-ng
-    container_name: admin-ng
-  dashboard:
-    build:
-      context: .
-      dockerfile: ./projects/dashboard/Dockerfile
-    image: dashboard-ng
-    container_name: dashboard-ng
-# sudo docker-compose -f docker-compose.yml up -d --build
+  website-microservice:
+    image: website-microservice
+    volumes:
+      - ./projects/website:/app
+      - /app/node_modules
+    ports:
+      - "4200:4200"
+    command: 'ng serve --port 4200 --host 0.0.0.0 --public-host="http://0.0.0.0:4200" --disable-host-check'
+  admin-microservice:
+    image: admin-microservice
+    volumes:
+      - ./projects/admin:/app
+      - /app/node_modules
+    ports:
+      - "4000:4000"
+    command: 'ng serve --port 4000 --host 0.0.0.0 --public-host="http://0.0.0.0:4000" --base-href /admin/ --disable-host-check'
+  dashboard-microservice:
+    image: dashboard-microservice
+    volumes:
+      - ./projects/dashboard:/app
+      - /app/node_modules
+    ports:
+      - "4100:4100"
+    command: 'ng serve --port 4100 --host 0.0.0.0 --public-host="http://0.0.0.0:4100" --base-href /dashboard/ --disable-host-check'
+  angular-workspace-nginx:
+    image: angular-workspace-nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/etc/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/etc/conf.d/nginx.dev.conf:/etc/nginx/conf.d/default.conf
+    command: ["nginx", "-g", "daemon off;"]
+    links:
+      - website-microservice
+      - admin-microservice
+      - dashboard-microservice

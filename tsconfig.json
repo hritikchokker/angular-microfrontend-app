@@ -33,6 +33,10 @@
         "dist/tools/tools",
         "dist/tools"
       ],
+      "ui": [
+        "dist/ui/ui",
+        "dist/ui"
+      ],
       "vendors": [
         "dist/vendors/vendors",
         "dist/vendors"

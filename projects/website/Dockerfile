@@ -7,7 +7,7 @@ WORKDIR /app
 # Copy files from current directory  to working directory
 COPY . .
 
-RUN npm i && npm run build --project="website"
+RUN npm i && npm run build
 
 # STAGE 2
 
@@ -27,7 +27,3 @@ COPY --from=builder /app/dist/website .
 ENTRYPOINT [ "nginx","-g","daemon off;" ]
 
 # docker run --rm -it -p  8080:80 image-name
-
-# or
-
-# docker run --rm -it -p  8080:80 image-id
