@@ -21,6 +21,14 @@
       "dom"
     ],
     "paths": {
+      "auth": [
+        "dist/auth/auth",
+        "dist/auth"
+      ],
+      "post": [
+        "dist/post/post",
+        "dist/post"
+      ],
       "tools": [
         "dist/tools/tools",
         "dist/tools"
