@@ -11,3 +11,22 @@
     </a>
   </h3>
 </div>
+<br><br><br>
+<div class="post-wrapper"> Posts List
+  <ng-container *ngFor="let item of postList$|async as postList">
+    <ul>
+      <li>
+        Title: {{item?.title}}
+      </li>
+      <li>
+        Body: {{item?.body}}
+      </li>
+      <li>
+        <button (click)="alertUser(item)">
+          click to alert
+        </button>
+      </li>
+    </ul>
+  </ng-container>
+
+</div>
