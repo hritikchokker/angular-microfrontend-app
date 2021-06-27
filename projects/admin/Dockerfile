@@ -1,3 +1,4 @@
+# Create the node stage with the name "builder"
 FROM node:latest as builder
 
 # Set the working  directory
@@ -22,6 +23,11 @@ RUN rm -rf ./*
 # Copy static assets from builder stage
 COPY --from=builder /app/dist/admin .
 
-EXPOSE 4000
+# Containers  run nginx with global  directives and daemon off
+ENTRYPOINT [ "nginx","-g","daemon off;" ]
 
-CMD ng serve --port 4000 --host 0.0.0.0 --disable-host-check
+# docker run --rm -it -p  8080:80 image-name
+
+# or
+
+# docker run --rm -it -p  8080:80 image-id

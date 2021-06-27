@@ -27,3 +27,7 @@ COPY --from=builder /app/dist/website .
 ENTRYPOINT [ "nginx","-g","daemon off;" ]
 
 # docker run --rm -it -p  8080:80 image-name
+
+# or
+
+# docker run --rm -it -p  8080:80 image-id

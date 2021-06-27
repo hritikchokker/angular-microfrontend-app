@@ -1,28 +1,32 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import { POST_DATA } from './post.data';
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'platform'
 })
 export class PostService {
 
   postList$: BehaviorSubject<[]> = new BehaviorSubject([]);
   activePost$: BehaviorSubject<any> = new BehaviorSubject(null);
   constructor(
-    private _httpClient: HttpClient
+    // private _httpClient: HttpClient
   ) {
-    this.activePost$.subscribe(data => {
-      console.log(data, 'asdasdas')
-    })
+    console.info('new instance created');
+    // this.activePost$.subscribe(data => {
+    //   if (data) {
+
+    //   }
+    // })
   }
 
 
   fetchPosts() {
-    this._httpClient.get('https://jsonplaceholder.typicode.com/posts')
-      .subscribe((data: any) => {
-        if (data) {
-          this.postList$.next(data)
+    of(POST_DATA)
+      .subscribe((res: any) => {
+        if (res) {
+          this.postList$.next(res);
         }
       })
   }

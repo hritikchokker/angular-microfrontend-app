@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, PlatformRef } from '@angular/core';
 import { PostService } from 'projects/post/src/public-api';
 import { Observable } from 'rxjs';
 
