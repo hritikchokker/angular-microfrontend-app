@@ -3,7 +3,8 @@
     Website App
   </h1>
   <h3>
-    <a href="http://localhost:4000" mat-raised-button>
+    <a href="http://localhost:4000/admin/?userId:928282822&sessionKey:asjnd8dnasd8asdn3dasdasd,status:active"
+      mat-raised-button>
       Navigate To Admin
     </a>
     <a href="http://localhost:4100" mat-raised-button>
@@ -11,6 +12,10 @@
     </a>
   </h3>
 </div>
+
+<!-- <button (click)="navigateToAdmin()">
+  Add Query Params
+</button> -->
 <br><br><br>
 <div class="post-wrapper"> Posts List
   <ng-container *ngFor="let item of postList$|async as postList">

@@ -1,5 +1,5 @@
 # Create the node stage with the name "builder"
-FROM node:latest as builder
+FROM node:alpine as website-microservice
 
 # Set the working  directory
 WORKDIR /app
@@ -21,7 +21,7 @@ WORKDIR /usr/share/nginx/html
 RUN rm -rf ./*
 
 # Copy static assets from builder stage
-COPY --from=builder /app/dist/website .
+COPY website-microservice /app/dist/website
 
 # Containers  run nginx with global  directives and daemon off
 ENTRYPOINT [ "nginx","-g","daemon off;" ]

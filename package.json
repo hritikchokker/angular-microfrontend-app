@@ -5,6 +5,11 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "serve:website": "ng serve website --port 4200",
+    "serve:admin": "ng serve website --port 4000",
+    "serve:dashboard": "ng serve website --port 4100",
+    "build:website": "ng build --project=website",
+    "build:admin": "ng build --project=admin",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "build:project": "ng build --project=website && ng build --project=admin --base-href /admin/ && ng build --project=dashboard --base-href /dashboard/"

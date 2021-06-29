@@ -4,7 +4,7 @@ import { BehaviorSubject, Observable, of } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { POST_DATA } from './post.data';
 @Injectable({
-  providedIn: 'platform'
+  providedIn: 'root'
 })
 export class PostService {
 

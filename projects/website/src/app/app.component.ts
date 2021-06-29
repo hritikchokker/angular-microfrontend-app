@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  OnInit
+} from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PostService } from 'projects/post/src/public-api';
 import { Observable } from 'rxjs';
 @Component({
@@ -10,7 +14,9 @@ export class AppComponent implements OnInit {
   title = 'website';
   postList$!: Observable<any>;
   constructor(
-    private _postService: PostService
+    private _postService: PostService,
+    private _route: ActivatedRoute,
+    private _router: Router
   ) {
     this._postService.fetchPosts();
     this.postList$ = this._postService.postList$;
@@ -26,5 +32,8 @@ export class AppComponent implements OnInit {
         alert(JSON.stringify(data));
       }
     })
+  }
+
+  navigateToAdmin() {
   }
 }
